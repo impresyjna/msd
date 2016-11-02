@@ -32,4 +32,10 @@ public class Queries {
 
     static public String dropTripletBeforeTable = "drop table if exists triplets_before";
     static public String createTripletBeforeTable = "create table triplets_before (ID INTEGER PRIMARY KEY AUTOINCREMENT, user_id string, track_id string, timestamp BIGINT)";
+
+    //New schema indexes queries
+    static public String indexOnTripletIdFkCreateQuery = "CREATE INDEX TRIPLET_ID_FK ON TRIPLETS (TRACK_ID)";
+    static public String indexOnArtistIdFkCreateQuery = "CREATE INDEX ARTIST_ID_FK ON TRIPLETS (ARTIST_ID)";
+    static public String indexOnDatumIdFkCreateQuery = "CREATE INDEX DATUM_ID_FK ON TRIPLETS (DATUM_ID)";
+    static public String indexOnUserIdFkCreateQuery = "CREATE INDEX USER_ID_FK ON TRIPLETS (USER_ID)";
 }

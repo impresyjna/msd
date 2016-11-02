@@ -42,6 +42,7 @@ public class Main {
         statement.executeUpdate(queriesString.createTripletBeforeTable);
         statement.executeUpdate(queriesString.dropDateTable);
         statement.executeUpdate(queriesString.createDateTable);
+
         //Counters
         int tracksCounter = 0;
         int artistsCounter = 0;
@@ -190,8 +191,16 @@ public class Main {
         tripletStatement.close();
         userStatement.close();
         datumStatement.close();
+        statement.execute(queriesString.indexOnArtistIdFkCreateQuery);
+        statement.execute(queriesString.indexOnDatumIdFkCreateQuery);
+        statement.execute(queriesString.indexOnTripletIdFkCreateQuery);
+        statement.execute(queriesString.indexOnUserIdFkCreateQuery);
+        connection.commit();
         elapsedTime = System.nanoTime() - startTime;
+
+
         System.out.println("Finished triplets_sample in time " + elapsedTime / 1000000000 + " s");
+
         try {
             if (connection != null)
                 connection.close();
